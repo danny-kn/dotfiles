@@ -43,8 +43,6 @@ path_append "/usr/local/zig/bin"
 command -v uv >/dev/null && eval "$(uv generate-shell-completion zsh)"
 command -v uvx >/dev/null && eval "$(uvx --generate-shell-completion zsh)"
 
-unset HISTFILE
-
-# HISTFILE="$HOME/.zsh_history"
-# HISTSIZE=100000
-# SAVEHIST=100000
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
