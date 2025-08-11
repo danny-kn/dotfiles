@@ -23,6 +23,9 @@ vim.pack.add({
 	{ src = "https://github.com/echasnovski/mini.surround" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
+	{ src = "https://github.com/tpope/vim-dadbod" },
+	{ src = "https://github.com/kristijanhusak/vim-dadbod-ui" },
+	{ src = "https://github.com/kristijanhusak/vim-dadbod-completion" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 })
 
