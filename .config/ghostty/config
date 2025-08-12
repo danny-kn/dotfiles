@@ -7,16 +7,32 @@ window-decoration=none
 # theme=catppuccin-frappe
 # theme=catppuccin-latte
 
-theme=rose-pine
+# theme=rose-pine
 # theme=rose-pine-moon
 # theme=rose-pine-dawn
 
 # theme=NvimDark
 
+# theme=zenwritten_dark
+# theme=zenwritten_light
+
+# https://l0go.github.io/ghostty-base16-converter/
+# https://github.com/tinted-theming/base16-schemes
+# https://github.com/tinted-theming/base16-schemes/blob/main/grayscale-dark.yaml
+# https://github.com/tinted-theming/base16-schemes/blob/main/grayscale-light.yaml
+
+# Base16 Grayscale Dark
+# https://base16.netlify.app/previews/base16-grayscale-dark.html
+theme=base16-grayscale-dark
+
+# Base16 Grayscale Light
+# https://base16.netlify.app/previews/base16-grayscale-light.html
+# theme=base16-grayscale-light
+
 alpha-blending=native
 
 font-family=ZedMono Nerd Font
-font-size=16
+font-size=14
 
 font-style=Regular
 font-style-bold=false
