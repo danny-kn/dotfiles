@@ -22,10 +22,13 @@ vim.pack.add({
 	{ src = "https://github.com/echasnovski/mini.pairs" },
 	{ src = "https://github.com/echasnovski/mini.surround" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
-	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
+	{ src = "https://github.com/RRethy/base16-nvim" },
 	{ src = "https://github.com/tpope/vim-dadbod" },
 	{ src = "https://github.com/kristijanhusak/vim-dadbod-ui" },
 	{ src = "https://github.com/kristijanhusak/vim-dadbod-completion" },
+	{ src = "https://github.com/github/copilot.vim" },
+	{ src = "https://github.com/monkoose/neocodeium" },
+	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 })
 
@@ -81,11 +84,6 @@ require("blink.cmp").setup({
 		["<C-c>"] = { "hide", "fallback" },
 	}
 })
-
-vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
-vim.api.nvim_set_hl(0, "BlinkCmpMenu", { link = "Normal" })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "Normal" })
-vim.api.nvim_set_hl(0, "BlinkCmpKind", { link = "Normal" })
 
 vim.keymap.set("n", "<leader>|", ":vs<cr>", { desc = "split vertically" })
 vim.keymap.set("n", "<leader>-", ":sp<cr>", { desc = "split horizontally" })
@@ -171,7 +169,7 @@ require("mini.pick").setup({
 
 -- vim.keymap.set("n", "<leader>f", ":Pick files<cr>")
 vim.keymap.set("n", "<leader>f", function()
-	MiniPick.builtin.files({}, {
+	require("mini.pick").builtin.files({}, {
 		source = {
 			show = function(buf_id, items, query)
 				return MiniPick.default_show(buf_id, items, query, { show_icons = false })
@@ -182,8 +180,35 @@ end)
 
 -- vim.keymap.set("n", "<leader>h", ":Pick help<cr>")
 vim.keymap.set("n", "<leader>h", function()
-	MiniPick.builtin.help({ default_split = "vertical" }, {})
+	require("mini.pick").builtin.help({ default_split = "vertical" }, {})
 end)
+
+vim.cmd("colorscheme base16-grayscale-dark")
+-- vim.cmd("colorscheme base16-grayscale-light")
+
+-- vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenu", { link = "Normal" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "Normal" })
+vim.api.nvim_set_hl(0, "BlinkCmpKind", { link = "Normal" })
+
+require("neocodeium").setup({ silent = true })
+
+vim.keymap.set("i", "<A-f>", function() require("neocodeium").accept() end, { desc = "accept suggestion" })
+vim.keymap.set("i", "<A-e>", function() require("neocodeium").cycle_or_complete() end, { desc = "next suggestion" })
+vim.keymap.set("i", "<A-r>", function() require("neocodeium").cycle_or_complete(-1) end, { desc = "previous suggestion" })
+vim.keymap.set("i", "<A-c>", function() require("neocodeium").clear() end, { desc = "clear suggestion" })
+
+-- enable neocodeium completion in the current buffer:
+vim.keymap.set("n", "<leader>n", function() require("neocodeium").enable_buffer() end,
+	{ desc = "enable neocodeium in current buffer" })
+
+-- disable neocodeium completion in the current buffer:
+vim.keymap.set("n", "<leader>ns", function() require("neocodeium").disable_buffer() end,
+	{ desc = "disable neocodeium in current buffer" })
+
+-- open windsurf chat:
+vim.keymap.set("n", "<leader>nc", function() require("neocodeium").chat() end, { desc = "open windsurf chat" })
+
 
 require("typst-preview").setup({
 	open_cmd = "qutebrowser %s",
