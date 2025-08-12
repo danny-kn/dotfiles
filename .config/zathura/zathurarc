@@ -1,0 +1,18 @@
+# include themes/catppuccin-mocha
+# include themes/catppuccin-macchiato
+# include themes/catppuccin-frappe
+# include themes/catppuccin-latte
+
+include themes/base16-grayscale-dark
+# include themes/base16-grayscale-light
+
+set font "ZedMono Nerd Font 10"
+
+set scroll-step 100
+
+map r reload
+map p print
+
+map J zoom out
+map K zoom in
+map R rotate
