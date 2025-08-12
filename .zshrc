@@ -8,7 +8,7 @@ export ZSH_CUSTOM="$ZSH/custom"
 export ZSH_CACHE_DIR="$ZSH/cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump-$HOST"
 
-ZSH_THEME="fishy"
+ZSH_THEME="lambda"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
