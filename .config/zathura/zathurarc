@@ -6,7 +6,7 @@
 include themes/base16-grayscale-dark
 # include themes/base16-grayscale-light
 
-set font "ZedMono Nerd Font 10"
+set font "ZedMono Nerd Font 12"
 
 set scroll-step 100
 
