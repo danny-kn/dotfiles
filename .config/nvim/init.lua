@@ -15,6 +15,7 @@ vim.pack.add({
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/saghen/blink.cmp" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/echasnovski/mini.ai" },
 	{ src = "https://github.com/echasnovski/mini.comment" },
@@ -84,6 +85,13 @@ require("blink.cmp").setup({
 		["<C-c>"] = { "hide", "fallback" },
 	}
 })
+
+require("luasnip").setup({ enable_autosnippets = true })
+require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
+
+vim.keymap.set({ "i" }, "<C-f>", function() require("luasnip").expand() end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-e>", function() require("luasnip").jump(1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-r>", function() require("luasnip").jump(-1) end, { silent = true })
 
 vim.keymap.set("n", "<leader>|", ":vs<cr>", { desc = "split vertically" })
 vim.keymap.set("n", "<leader>-", ":sp<cr>", { desc = "split horizontally" })
