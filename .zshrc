@@ -2,6 +2,7 @@ export LANG=en_US.UTF-8
 
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
+export MANPAGER="nvim +Man!"
 
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
@@ -43,6 +44,8 @@ path_append "/usr/local/zig/bin"
 command -v uv >/dev/null && eval "$(uv generate-shell-completion zsh)"
 command -v uvx >/dev/null && eval "$(uvx --generate-shell-completion zsh)"
 
-HISTFILE="$HOME/.zsh_history"
-HISTSIZE=100000
-SAVEHIST=100000
+unset HISTFILE
+
+# HISTFILE="$HOME/.zsh_history"
+# HISTSIZE=100000
+# SAVEHIST=100000
