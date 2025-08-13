@@ -6,13 +6,40 @@
 include themes/base16-grayscale-dark
 # include themes/base16-grayscale-light
 
+# set window-title-basename true
+set selection-clipboard "clipboard"
+
 set font "ZedMono Nerd Font 12"
 
+set adjust-open "best-fit"
+set pages-per-row 1
+
+set scroll-page-aware true
+set scroll-full-overlap 0
 set scroll-step 100
 
-map r reload
-map p print
+# shows or hides gui elements.
+# if it contains 'c', the command line is displayed.
+# if it contains 's', the statusbar is displayed.
+# if it contains 'h', the horizontal scrollbar is displayed.
+# if it contains 'v', the vertical scrollbar is displayed.
 
-map J zoom out
-map K zoom in
-map R rotate
+set guioptions "shv"
+
+map [normal] r reload
+map [normal] p print
+map [normal] i recolor
+map [normal] J zoom out
+map [normal] K zoom in
+map [normal] R rotate
+
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+
+map [fullscreen] r reload
+map [fullscreen] p print
+map [fullscreen] i recolor
+map [fullscreen] J zoom out
+map [fullscreen] K zoom in
+map [fullscreen] R rotate
