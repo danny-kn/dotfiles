@@ -90,16 +90,23 @@ require("luasnip").setup({ enable_autosnippets = true })
 require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
 
 vim.keymap.set({ "i" }, "<C-f>", function() require("luasnip").expand() end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-e>", function() require("luasnip").jump(1) end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-r>", function() require("luasnip").jump(-1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-n>", function() require("luasnip").jump(1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-p>", function() require("luasnip").jump(-1) end, { silent = true })
 
 vim.keymap.set("n", "<leader>|", ":vs<cr>", { desc = "split vertically" })
 vim.keymap.set("n", "<leader>-", ":sp<cr>", { desc = "split horizontally" })
 
-vim.keymap.set("n", "<C-h>", ":winc h<cr>", { desc = "move to left window" })
-vim.keymap.set("n", "<C-l>", ":winc l<cr>", { desc = "move to right window" })
-vim.keymap.set("n", "<C-k>", ":winc k<cr>", { desc = "move to top window" })
-vim.keymap.set("n", "<C-j>", ":winc j<cr>", { desc = "move to bottom window" })
+vim.keymap.set("n", "H", ":winc h<cr>", { desc = "move to left window" })
+vim.keymap.set("n", "L", ":winc l<cr>", { desc = "move to right window" })
+vim.keymap.set("n", "K", ":winc k<cr>", { desc = "move to top window" })
+vim.keymap.set("n", "J", ":winc j<cr>", { desc = "move to bottom window" })
+
+vim.keymap.set("n", "<C-Up>", ":resize +2<cr>", { desc = "increase window height" })
+vim.keymap.set("n", "<C-Down>", ":resize -2<cr>", { desc = "decrease window height" })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<cr>", { desc = "increase window width" })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<cr>", { desc = "decrease window width" })
+
+vim.keymap.set("n", "=", ":wincmd =<cr>", { desc = "..." })
 
 vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "write entire buffer to current file" })
 vim.keymap.set("n", "<leader>q", ":q<cr>", { desc = "quit current window" })
@@ -202,8 +209,8 @@ vim.api.nvim_set_hl(0, "BlinkCmpKind", { link = "Normal" })
 require("neocodeium").setup({ silent = true })
 
 vim.keymap.set("i", "<A-f>", function() require("neocodeium").accept() end, { desc = "accept suggestion" })
-vim.keymap.set("i", "<A-e>", function() require("neocodeium").cycle_or_complete() end, { desc = "next suggestion" })
-vim.keymap.set("i", "<A-r>", function() require("neocodeium").cycle_or_complete(-1) end, { desc = "previous suggestion" })
+vim.keymap.set("i", "<A-n>", function() require("neocodeium").cycle_or_complete() end, { desc = "next suggestion" })
+vim.keymap.set("i", "<A-p>", function() require("neocodeium").cycle_or_complete(-1) end, { desc = "previous suggestion" })
 vim.keymap.set("i", "<A-c>", function() require("neocodeium").clear() end, { desc = "clear suggestion" })
 
 -- enable neocodeium completion in the current buffer:
