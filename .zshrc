@@ -19,6 +19,9 @@ zstyle ":omz:update" frequency 16
 # autoload -U compinit && compinit
 # autoload -U colors && colors
 
+unsetopt correct_all
+unsetopt correct
+
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting dotenv)
 
 [ -r "$ZSH/oh-my-zsh.sh" ] && . "$ZSH/oh-my-zsh.sh"
@@ -37,6 +40,8 @@ export NVM_DIR="$HOME/.config/nvm"
 
 path_prepend "$HOME/.local/bin"
 path_prepend "$HOME/.local/share/bob/nvim-bin"
+path_prepend "$HOME/.juliaup/bin"
+
 path_append "/usr/local/go/bin"
 path_append "$HOME/go/bin"
 path_append "/usr/local/zig/bin"
