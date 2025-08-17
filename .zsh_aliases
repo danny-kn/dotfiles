@@ -1,0 +1,42 @@
+alias ~="cd ~"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias p="pwd"
+alias l="ls --color=always"
+alias ll="ls -alrt --color=always"
+
+alias sd="cd ~ && cd \$(find . -maxdepth 10 -readable -type d 2>/dev/null | fzf)"
+
+alias mv="mv -i"
+alias rm="rm -i"
+alias cp="cp -i"
+
+alias clc="clear"
+alias q="exit"
+
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+
+alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
+alias nv="nvim"
+
+alias invide='~/.local/bin/neovide/neovide.AppImage $(fzf -m --preview="bat --color=always {}")'
+alias nvide="$HOME/.local/bin/neovide/neovide.AppImage"
+
+alias zshc="nvim $HOME/.zshrc"
+alias vc="cd $HOME/.config/nvim/ && nvim"
+alias nvc="cd $HOME/.config/nvim/ && nvim"
+alias nvidec="cd $HOME/.config/nvim/ && $HOME/.local/bin/neovide/neovide.AppImage"
+
+alias prime-run="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
+
+alias venv="source $HOME/.venv/bin/activate"
+alias dev="source $HOME/.dev/bin/activate"
+
+alias tm="tmux"
+alias lg="lazygit"
+alias ld="lazydocker"
