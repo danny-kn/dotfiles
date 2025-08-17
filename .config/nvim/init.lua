@@ -23,6 +23,7 @@ vim.pack.add({
 	{ src = "https://github.com/echasnovski/mini.pairs" },
 	{ src = "https://github.com/echasnovski/mini.surround" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
+	{ src = "https://github.com/echasnovski/mini.starter" },
 	{ src = "https://github.com/RRethy/base16-nvim" },
 	{ src = "https://github.com/tpope/vim-dadbod" },
 	{ src = "https://github.com/kristijanhusak/vim-dadbod-ui" },
@@ -80,8 +81,8 @@ require("blink.cmp").setup({
 	keymap = {
 		preset = "default",
 		["<cr>"] = { "accept", "fallback" },
-		["<A-k>"] = { "select_prev", "fallback" },
-		["<A-j>"] = { "select_next", "fallback" },
+		["<C-k>"] = { "select_prev", "fallback" },
+		["<C-j>"] = { "select_next", "fallback" },
 		["<C-c>"] = { "hide", "fallback" },
 	}
 })
@@ -89,7 +90,7 @@ require("blink.cmp").setup({
 require("luasnip").setup({ enable_autosnippets = true })
 require("luasnip.loaders.from_lua").load({ paths = { "./snippets" } })
 
-vim.keymap.set({ "i" }, "<C-f>", function() require("luasnip").expand() end, { silent = true })
+-- vim.keymap.set({ "i" }, "<C-f>", function() require("luasnip").expand() end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<C-n>", function() require("luasnip").jump(1) end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<C-p>", function() require("luasnip").jump(-1) end, { silent = true })
 
@@ -161,7 +162,21 @@ vim.keymap.set("n", "-", require("oil").open_float)
 
 require("mini.ai").setup()
 require("mini.comment").setup()
-require("mini.move").setup()
+
+require("mini.move").setup({
+	mappings = {
+		left = "<C-h>",
+		right = "<C-l>",
+		up = "<C-k>",
+		down = "<C-j>",
+
+		line_left = "<C-h>",
+		line_right = "<C-l>",
+		line_up = "<C-k>",
+		line_down = "<C-j>"
+	}
+})
+
 require("mini.pairs").setup()
 require("mini.surround").setup()
 
@@ -177,8 +192,8 @@ require("mini.pick").setup({
 		prompt_caret = " "
 	},
 	mappings = {
-		move_up = "<A-k>",
-		move_down = "<A-j>"
+		move_up = "<C-k>",
+		move_down = "<C-j>"
 	}
 })
 
@@ -198,20 +213,22 @@ vim.keymap.set("n", "<leader>h", function()
 	require("mini.pick").builtin.help({ default_split = "vertical" }, {})
 end)
 
-vim.cmd("colorscheme base16-grayscale-dark")
+require("mini.starter").setup()
+
+-- vim.cmd("colorscheme base16-grayscale-dark")
 -- vim.cmd("colorscheme base16-grayscale-light")
 
--- vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenu", { link = "Normal" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "Normal" })
 vim.api.nvim_set_hl(0, "BlinkCmpKind", { link = "Normal" })
 
 require("neocodeium").setup({ silent = true })
 
-vim.keymap.set("i", "<A-f>", function() require("neocodeium").accept() end, { desc = "accept suggestion" })
+vim.keymap.set("i", "<A-s>", function() require("neocodeium").accept() end, { desc = "accept suggestion" })
 vim.keymap.set("i", "<A-n>", function() require("neocodeium").cycle_or_complete() end, { desc = "next suggestion" })
 vim.keymap.set("i", "<A-p>", function() require("neocodeium").cycle_or_complete(-1) end, { desc = "previous suggestion" })
-vim.keymap.set("i", "<A-c>", function() require("neocodeium").clear() end, { desc = "clear suggestion" })
+vim.keymap.set("i", "<C-c>", function() require("neocodeium").clear() end, { desc = "clear suggestion" })
 
 -- enable neocodeium completion in the current buffer:
 vim.keymap.set("n", "<leader>n", function() require("neocodeium").enable_buffer() end,
@@ -223,7 +240,6 @@ vim.keymap.set("n", "<leader>ns", function() require("neocodeium").disable_buffe
 
 -- open windsurf chat:
 vim.keymap.set("n", "<leader>nc", function() require("neocodeium").chat() end, { desc = "open windsurf chat" })
-
 
 require("typst-preview").setup({
 	open_cmd = "qutebrowser %s",
