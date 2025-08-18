@@ -7,7 +7,7 @@ window-decoration=none
 # theme=catppuccin-frappe
 # theme=catppuccin-latte
 
-theme=NvimDark
+# theme=NvimDark
 # theme=NvimLight
 
 # https://l0go.github.io/ghostty-base16-converter/
@@ -17,7 +17,7 @@ theme=NvimDark
 
 # Base16 Grayscale Dark
 # https://base16.netlify.app/previews/base16-grayscale-dark.html
-# theme=base16-grayscale-dark
+theme=base16-grayscale-dark
 
 # Base16 Grayscale Light
 # https://base16.netlify.app/previews/base16-grayscale-light.html
