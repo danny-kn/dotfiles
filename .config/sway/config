@@ -16,7 +16,7 @@ set $term ghostty
 
 # your preferred application launcher:
 # set $menu wmenu-run
-set $menu wofi --show drun --width 50% --height 50%
+set $menu wofi --show drun --width 32% --height 32%
 
 font pango: "ZedMono Nerd Font" 12
 
@@ -27,7 +27,7 @@ font pango: "ZedMono Nerd Font" 12
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/pictures/img/.png/img_02.png fill
+output * bg ~/pictures/img/.png/img_07.png fill
 
 
 
@@ -40,7 +40,15 @@ output * bg ~/pictures/img/.png/img_02.png fill
 #          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f -c 000000'
 
-exec swayidle -w -c ~/.config/swayidle/config
+exec swayidle -w \
+	timeout 300 'swaylock -f -c 000000' \
+	timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+	before-sleep 'swaylock -f -c 000000'
+
+# This will lock your screen after 300 seconds of inactivity, then turn
+# off your displays after another 300 seconds, and turn your screens back
+# on when resumed. It will also lock your screen before your computer
+# goes to sleep.
 
 
 
@@ -177,6 +185,13 @@ bindsym $mod+r mode "resize"
 
 # --- ... ---
 
+exec /usr/bin/pipewire &
+# exec pipewire &
+exec /usr/bin/pipewire-pulse &
+# exec pipewire-pulse &
+exec /usr/bin/wireplumber &
+# exec wireplumber &
+
 # special keys to adjust the volume via PulseAudio:
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
@@ -192,20 +207,30 @@ bindsym Print exec grim
 
 # --- ... ---
 
+# base16 grayscale dark colorscheme:
+client.focused #464646 #464646 #b9b9b9 #464646
+client.unfocused #101010 #101010 #b9b9b9 #101010
+
+# base16 grayscale light colorscheme:
+# client.focused #b9b9b9 #b9b9b9 #464646 #b9b9b9
+# client.unfocused #f7f7f7 #f7f7f7 #464646 #f7f7f7
+
 bar {
     position top
 
     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+		# base16 grayscale dark colorscheme:
+		statusline #b9b9b9
+		background #101010
+		inactive_workspace #101010 #101010 #b9b9b9
+
+		# base16 grayscale light colorscheme:
+		# statusline #464646
+		# background #f7f7f7
+		# inactive_workspace #f7f7f7 #f7f7f7 #464646
     }
 }
-
-workspace 10 gaps horizontal 100
-workspace 10 gaps vertical 50
-workspace 10 gaps inner 25
 
 include /etc/sway/config.d/*
