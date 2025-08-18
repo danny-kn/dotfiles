@@ -23,7 +23,6 @@ vim.pack.add({
 	{ src = "https://github.com/echasnovski/mini.pairs" },
 	{ src = "https://github.com/echasnovski/mini.surround" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
-	{ src = "https://github.com/echasnovski/mini.starter" },
 	{ src = "https://github.com/RRethy/base16-nvim" },
 	{ src = "https://github.com/tpope/vim-dadbod" },
 	{ src = "https://github.com/kristijanhusak/vim-dadbod-ui" },
@@ -213,12 +212,13 @@ vim.keymap.set("n", "<leader>h", function()
 	require("mini.pick").builtin.help({ default_split = "vertical" }, {})
 end)
 
-require("mini.starter").setup()
+-- base16 grayscale dark colorscheme:
+vim.cmd("colorscheme base16-grayscale-dark")
 
--- vim.cmd("colorscheme base16-grayscale-dark")
+-- base16 grayscale light colorscheme:
 -- vim.cmd("colorscheme base16-grayscale-light")
 
-vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenu", { link = "Normal" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "Normal" })
 vim.api.nvim_set_hl(0, "BlinkCmpKind", { link = "Normal" })
