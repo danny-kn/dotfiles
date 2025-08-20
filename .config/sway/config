@@ -87,7 +87,23 @@ bindsym $mod+Shift+q kill
 
 floating_modifier $mod normal
 
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+# bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+bindsym $mod+Shift+e exec swaynag -t warning \
+	-m 'do you want to exit sway?' \
+	-b 'lock' '$lock' \
+	-b 'reboot' 'systemctl -i reboot' \
+	-b 'shutdown' 'systemctl -i poweroff' \
+	-b 'yes, exit sway' 'swaymsg exit' \
+	--background=#101010 \
+	--text=#b9b9b9 \
+	--font="ZedMono Nerd Font" 10 \
+	--button-background=#101010 \
+	--button-border-size=1px \
+	--border=#464646 \
+	--button-text=#b9b9b9 \
+	--border-bottom-size=3px \
+	--border-bottom=#464646
 
 # --- ... ---
 
